@@ -13,9 +13,9 @@ class StudentDAO:
     def get_student_by_name(self, name: str = None):
         if name is None:
             return list(self._students.values())
-        for student in self._students.values(): 
-            if student.name == name:
-                return student
+        matching_students = [student for student in self._students.values() if student.name == name]
+        if matching_students:
+            return matching_students
         raise HTTPException(status_code=404, detail="Student not found")
 
     def create_student(self, student_id: int, student: Student):
