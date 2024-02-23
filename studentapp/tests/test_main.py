@@ -21,11 +21,6 @@ def test_create_student():
     assert response.status_code == 200
     assert response.json() == student.model_dump()
 
-def test_create_student():
-    student = Student(id=1, name="John", age=17, class_="year 12")
-    response = client.post("/students/1", json=student.model_dump())
-    assert response.status_code == 200
-    assert response.json() == student.model_dump()
 
 def test_get_student():
     response = client.get("/students/1")
